@@ -14,9 +14,9 @@ final class TransactionFailureRepository implements TransactionFailureRepository
 {
     public function find(int $id): TransactionFailure
     {
-        $eloquentTransactionFailure = $this->query()->find($id);
+        $eloquentTransactionFailure = $this->query()->findOrFail($id);
 
-        return $eloquentTransactionFailure ? $this->hydrate($eloquentTransactionFailure) : null;
+        return $this->hydrate($eloquentTransactionFailure);
     }
 
     public function store(TransactionFailure $transactionFailure): void

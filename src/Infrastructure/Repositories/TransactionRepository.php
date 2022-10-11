@@ -15,11 +15,11 @@ use Illuminate\Database\Eloquent\Model;
 
 final class TransactionRepository implements TransactionRepositoryInterface
 {
-    public function find(TransactionId $id): ?Transaction
+    public function find(TransactionId $id): Transaction
     {
         $eloquentTransaction = $this->query()->find((string) $id);
 
-        return $eloquentTransaction ? $this->hydrate($eloquentTransaction) : null;
+        return $this->hydrate($eloquentTransaction);
     }
 
     public function store(Transaction $transaction): void
