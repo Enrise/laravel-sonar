@@ -28,16 +28,16 @@ final class LaravelSonarServiceProvider extends ServiceProvider
             Route::group(__DIR__ . '/../../../routes/sonar.php');
         });
 
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'laravel-sonar');
+        $this->loadViewsFrom(__DIR__ . '/../../../resources/views', 'laravel-sonar');
         $this->loadMigrationsFrom(__DIR__ . '/../../../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/laravel-sonar.php' => config_path('laravel-sonar.php'),
+                __DIR__ . '/../../../config/laravel-sonar.php' => config_path('laravel-sonar.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__ . '/../../resources/views' => resource_path('views/vendor/laravel-sonar'),
+                __DIR__ . '/../../../resources/views' => resource_path('views/vendor/laravel-sonar'),
             ], 'views');
         }
     }
