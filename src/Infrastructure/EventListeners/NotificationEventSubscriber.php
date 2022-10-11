@@ -6,6 +6,7 @@ namespace Enrise\LaravelSonar\Infrastructure\EventListeners;
 
 use Enrise\LaravelSonar\Application\Services\TransactionServiceInterface;
 use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
+use Illuminate\Notifications\Events\NotificationFailed;
 use Illuminate\Notifications\Events\NotificationSending;
 use Illuminate\Notifications\Events\NotificationSent;
 
@@ -25,18 +26,17 @@ final class NotificationEventSubscriber
     {
         $currentTransaction = $this->transactionService->current();
 
-        dd($notificationEvent);
-
-        if ($notificationEvent->exitCode !== Command::SUCCESS) {
-            $this->transactionService->fail(
-                $currentTransaction,
-                sprintf('exited with code %d\n%s', $notificationEvent->exitCode, Artisan::output())
-            );
-
-            return;
-        }
-
         $this->transactionService->succeed($currentTransaction);
+    }
+
+    public function handleNotificationFailed(NotificationFailed $notificationEvent): void
+    {
+        $currentTransaction = $this->transactionService->current();
+
+        $this->transactionService->fail(
+            $currentTransaction,
+            "Could not send notification #{$notificationEvent->notification->id}",
+        );
     }
 
     public function subscribe(): array
@@ -44,6 +44,7 @@ final class NotificationEventSubscriber
         return [
             NotificationSending::class => 'handleNotificationSending',
             NotificationSent::class => 'handleNotificationSent',
+            NotificationFailed::class => 'handleNotificationFailed',
         ];
     }
 }
