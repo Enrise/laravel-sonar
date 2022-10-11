@@ -1,0 +1,54 @@
+{
+    "name": "enrise/laravel-sonar",
+    "description": "Essential Monitoring for Laravel",
+    "keywords": [
+        "enrise",
+        "laravel-sonar"
+    ],
+    "homepage": "https://github.com/enrise/laravel-sonar",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Enrise ",
+            "email": "sales@enrise.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Enrise\\LaravelSonar\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Enrise\\LaravelSonar\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Enrise\\LaravelSonar\\LaravelSonarServiceProvider"
+            ],
+            "aliases": {
+                "LaravelSonar": "Enrise\\LaravelSonar\\LaravelSonarFacade"
+            }
+        }
+    }
+}
