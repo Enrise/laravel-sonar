@@ -54,7 +54,7 @@ final class LaravelSonarServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-sonar');
+        $this->mergeConfigFrom(__DIR__ . '/../../../config/config.php', 'laravel-sonar');
 
         Event::subscribe(CommandEventSubscriber::class);
     }
