@@ -1,13 +1,13 @@
 @props(['transactions'])
 
-{{-- @dd($transactions) --}}
 
 <table class="min-w-full divide-y divide-gray-300">
     <thead class="bg-gray-50">
         <tr>
             <th><span class="sr-only">Status icon</span></th>
             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Time</th>
-            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Transaction</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Type</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Event class</th>
             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                 <span class="sr-only">Options</span>
@@ -27,6 +27,7 @@
                 @endif
             </td>
             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-800 sm:pl-6">{{ $transaction['started'] }}</td>
+            <td class="whitespace-nowrap px-3 py-4 text-gray-800">{{ $transaction['type'] }}</td>
             <td class="whitespace-nowrap px-3 py-4 text-gray-800">{{ $transaction['class'] }}</td>
             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 @if($transaction['is_failed'])
