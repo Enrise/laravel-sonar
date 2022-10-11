@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelSonarServiceProvider extends ServiceProvider
+final class LaravelSonarServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*
          * Optional methods to load your package assets
@@ -47,11 +49,10 @@ class LaravelSonarServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         dd(123);
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-sonar');
-
     }
 }
