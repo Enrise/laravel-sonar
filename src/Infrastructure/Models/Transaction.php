@@ -25,6 +25,6 @@ final class Transaction extends Model
     ];
 
     protected $casts = [
-        'is_failed' => 'bool'
+        'is_failed' => 'bool',
     ];
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\Repositories;
 
-use Carbon\CarbonImmutable;
 use Enrise\LaravelSonar\Domain\Entities\Transaction;
 use Enrise\LaravelSonar\Domain\Repositories\TransactionRepositoryInterface;
 use Enrise\LaravelSonar\Domain\ValueObjects\TransactionDateTime;

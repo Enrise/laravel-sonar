@@ -21,7 +21,7 @@ final class CommandEventSubscriber
 
     public function handleCommandStarting(CommandStarting $commandEvent): void
     {
-        if (!in_array($commandEvent->command, $this->commandWhitelist, true)) {
+        if (! in_array($commandEvent->command, $this->commandWhitelist, true)) {
             return;
         }
 
@@ -32,7 +32,7 @@ final class CommandEventSubscriber
 
     public function handleCommandFinished(CommandFinished $commandEvent): void
     {
-        if (!in_array($commandEvent->command, $this->commandWhitelist, true)) {
+        if (! in_array($commandEvent->command, $this->commandWhitelist, true)) {
             return;
         }
 
