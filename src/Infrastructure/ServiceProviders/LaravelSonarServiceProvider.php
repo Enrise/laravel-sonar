@@ -53,7 +53,15 @@ final class LaravelSonarServiceProvider extends ServiceProvider
         $this->app->bind(TransactionServiceInterface::class, TransactionService::class);
         $this->app->bind(TransactionRepositoryInterface::class, TransactionRepository::class);
         $this->app->bind(TransactionFailureRepositoryInterface::class, TransactionFailureRepository::class);
+
         $this->app->singleton(CurrentTransactionStackInterface::class, CurrentTransactionStack::class);
+
+        $this->app->bind(CommandEventSubscriber::class, static function () {
+            return new CommandEventSubscriber(
+                resolve(TransactionServiceInterface::class),
+                config('laravel-sonar.commands'),
+            );
+        });
 
         Event::subscribe(CommandEventSubscriber::class);
     }

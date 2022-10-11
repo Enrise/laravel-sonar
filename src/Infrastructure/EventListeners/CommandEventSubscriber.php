@@ -15,14 +15,16 @@ final class CommandEventSubscriber
 {
     public function __construct(
         private readonly TransactionServiceInterface $transactionService,
+        private array $commandWhitelist = []
     ) {
     }
 
     public function handleCommandStarting(CommandStarting $commandEvent): void
     {
-        if (str_contains($commandEvent->command, 'migrate')) {
+        if (!in_array($commandEvent->command, $this->commandWhitelist, true)) {
             return;
         }
+
         $this->transactionService->start(TransactionType::COMMAND, CommandStarting::class, [
             'command' => $commandEvent->command,
         ]);
@@ -30,7 +32,7 @@ final class CommandEventSubscriber
 
     public function handleCommandFinished(CommandFinished $commandEvent): void
     {
-        if (str_contains($commandEvent->command, 'migrate')) {
+        if (!in_array($commandEvent->command, $this->commandWhitelist, true)) {
             return;
         }
 
