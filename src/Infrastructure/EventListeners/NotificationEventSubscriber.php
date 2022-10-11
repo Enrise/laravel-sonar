@@ -19,7 +19,7 @@ final class NotificationEventSubscriber
 
     public function handleNotificationSending(NotificationSending $notificationEvent): void
     {
-        $this->transactionService->start(TransactionType::COMMAND, get_class($notificationEvent->notification), []);
+        $this->transactionService->start(TransactionType::NOTIFICATION, get_class($notificationEvent->notification), []);
     }
 
     public function handleNotificationSent(NotificationSent $notificationEvent): void

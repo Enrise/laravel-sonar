@@ -13,5 +13,7 @@ final class TransactionFailure extends Model
     use HasFactory;
     use HasUlids;
 
-    protected $fillable = ['*'];
+    protected $primaryKey = 'uuid';
+
+    protected $fillable = ['uuid', 'transaction_id', 'error_message', 'is_resolved'];
 }

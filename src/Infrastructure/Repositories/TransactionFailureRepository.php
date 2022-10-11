@@ -28,7 +28,7 @@ final class TransactionFailureRepository implements TransactionFailureRepository
     {
         $this->query()->create([
             'is_resolved' => $transactionFailure->isResolved,
-            'message' => $transactionFailure->message,
+            'error_message' => $transactionFailure->message,
             'transaction_id' => $transactionFailure->transactionId,
         ]);
     }
