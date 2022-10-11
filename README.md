@@ -12,7 +12,7 @@ Add the sonar routes to the route group of your choosing
 
 in `routes/web.php`
 ```php
-    Route::prefix('/sonar', function() {
+    Route::prefix('/sonar')->group(function() {
         Route::get('/', \Enrise\LaravelSonar\Infrastructure\Actions\DashboardAction::class);
         Route::post('/transactions/resolve', \Enrise\LaravelSonar\Infrastructure\Actions\TransactionResolveAction::class);
     });
