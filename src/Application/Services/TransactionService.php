@@ -41,7 +41,9 @@ final class TransactionService implements TransactionServiceInterface
 
     public function succeed(Transaction $transaction): void
     {
-        $this->transactionRepository->updateFinishedAt($transaction, TransactionDateTime::now());
+        $finishedTransaction = $transaction->finish(TransactionDateTime::now());
+
+        $this->transactionRepository->store($finishedTransaction);
     }
 
     public function fail(Transaction $transaction, string $message): void
@@ -52,6 +54,10 @@ final class TransactionService implements TransactionServiceInterface
             message: $message,
             isResolved: false,
         );
+
+        $transaction = $transaction->fail()->finish(TransactionDateTime::now());
+
+        $this->transactionRepository->store($transaction);
 
         $this->transactionFailureRepository->store($transactionFailure);
     }

@@ -37,13 +37,6 @@ final class TransactionRepository implements TransactionRepositoryInterface
         );
     }
 
-    public function updateFinishedAt(Transaction $transaction, TransactionDateTime $finished): void
-    {
-        $this->for($transaction)->update([
-            'finished' => $finished,
-        ]);
-    }
-
     private function query(): Builder
     {
         return EloquentTransaction::query();
@@ -61,8 +54,8 @@ final class TransactionRepository implements TransactionRepositoryInterface
             type: TransactionType::from($eloquentTransaction->type),
             class: $eloquentTransaction->class,
             started: TransactionDateTime::fromCarbon($eloquentTransaction->started),
-            finished: TransactionDateTime::fromCarbon($eloquentTransaction->finished),
             context: $eloquentTransaction->context ?? [],
+            finished: TransactionDateTime::fromCarbon($eloquentTransaction->finished),
         );
     }
 }

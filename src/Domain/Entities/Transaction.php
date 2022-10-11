@@ -15,15 +15,35 @@ final class Transaction
         public readonly TransactionType $type,
         public readonly string $class,
         public readonly TransactionDateTime $started,
-        public readonly ?TransactionDateTime $finished = null,
         public readonly array $context = [],
+        public readonly ?TransactionDateTime $finished = null,
+        public readonly bool $isFailed = false,
     ) {
     }
 
-    public static function new(): self
+    public function fail(): self
     {
         return new self(
-            TransactionId::new(),
+            $this->id,
+            $this->type,
+            $this->class,
+            $this->started,
+            $this->context,
+            $this->finished,
+            true,
+        );
+    }
+
+    public function finish(TransactionDateTime $finishDateTime): self
+    {
+        return new self(
+            $this->id,
+            $this->type,
+            $this->class,
+            $this->started,
+            $this->context,
+            $finishDateTime,
+            $this->isFailed,
         );
     }
 }

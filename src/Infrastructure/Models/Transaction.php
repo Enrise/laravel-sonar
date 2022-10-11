@@ -17,10 +17,14 @@ final class Transaction extends Model
 
     protected $primaryKey = 'uuid';
 
-    protected $fillable = ['uuid', 'type', 'class', 'context', 'started', 'finished'];
+    protected $fillable = ['uuid', 'type', 'class', 'context', 'started', 'finished', 'is_failed'];
 
     protected $dates = [
         'started',
         'finished',
+    ];
+
+    protected $casts = [
+        'is_failed' => 'bool'
     ];
 }

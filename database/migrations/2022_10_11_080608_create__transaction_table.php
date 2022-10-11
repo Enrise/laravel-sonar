@@ -19,6 +19,7 @@ return new class() extends Migration {
             $table->json('context')->nullable();
             $table->timestamp('started');
             $table->timestamp('finished')->nullable();
+            $table->boolean('is_failed')->default(false);
         });
     }
 
