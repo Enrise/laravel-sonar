@@ -56,8 +56,8 @@ final class TransactionRepository implements TransactionRepositoryInterface
             type: TransactionType::from($eloquentTransaction->type),
             class: $eloquentTransaction->class,
             started: TransactionDateTime::fromCarbon($eloquentTransaction->started),
-            context: $eloquentTransaction->context ?? [],
             finished: TransactionDateTime::fromCarbon($eloquentTransaction->finished),
+            context: $eloquentTransaction->context ?? [],
         );
     }
 }

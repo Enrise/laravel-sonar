@@ -15,8 +15,8 @@ final class Transaction
         public readonly TransactionType $type,
         public readonly string $class,
         public readonly TransactionDateTime $started,
+        public readonly TransactionDateTime $finished,
         public readonly array $context = [],
-        public readonly ?TransactionDateTime $finished = null,
         public readonly bool $isFailed = false,
     ) {
     }
@@ -28,8 +28,8 @@ final class Transaction
             $this->type,
             $this->class,
             $this->started,
-            $this->context,
             $this->finished,
+            $this->context,
             true,
         );
     }
@@ -41,8 +41,8 @@ final class Transaction
             $this->type,
             $this->class,
             $this->started,
-            $this->context,
             $finishDateTime,
+            $this->context,
             $this->isFailed,
         );
     }

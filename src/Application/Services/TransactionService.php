@@ -29,6 +29,7 @@ final class TransactionService implements TransactionServiceInterface
             type: $type,
             class: $class,
             started: TransactionDateTime::now(),
+            finished: TransactionDateTime::empty(),
             context: $context,
         );
 
