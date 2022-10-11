@@ -10,7 +10,7 @@ final class Transaction
         public readonly TransactionId $id,
         public readonly TransactionType $type,
         public readonly string $class,
-        public readonly ?TransactionDateTime $started = null,
+        public readonly TransactionDateTime $started,
         public readonly ?TransactionDateTime $finished = null,
         public readonly array $context = [],
     ) {

@@ -24,12 +24,13 @@ final class TransactionRepository implements TransactionRepositoryInterface
 
     public function store(Transaction $transaction): void
     {
-        EloquentTransaction::updateOrCreate(
+        EloquentTransaction::create(
             [
-                'id' => $transaction->id,
-            ],
-            [
-
+                'uuid' => $transaction->id,
+                'type' => $transaction->type,
+                'class' => $transaction->class,
+                'context' => $transaction->context,
+                'started' => (string)$transaction->started,
             ]
         );
     }
@@ -48,7 +49,7 @@ final class TransactionRepository implements TransactionRepositoryInterface
 
     private function for(Transaction $transaction): Builder
     {
-        return $this->query()->where('id', $transaction->id);
+        return $this->query()->where('uuid', $transaction->id);
     }
 
     private function hydrate(Model|EloquentTransaction $eloquentTransaction): Transaction

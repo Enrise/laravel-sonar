@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Enrise\LaravelSonar\Infrastructure\EventListeners;
 
 use Enrise\LaravelSonar\Application\TransactionServiceInterface;
+use Enrise\LaravelSonar\Domain\TransactionType;
 use Illuminate\Console\Command;
 use Illuminate\Console\Events\CommandFinished;
 use Illuminate\Console\Events\CommandStarting;
@@ -19,11 +20,18 @@ final class CommandEventSubscriber
 
     public function handleCommandStarting(CommandStarting $commandEvent): void
     {
-        $this->transactionService->start();
+        if (str_contains($commandEvent->command, 'migrate')) {
+            return;
+        }
+        $this->transactionService->start(TransactionType::COMMAND, CommandStarting::class, [ 'command' => $commandEvent->command ]);
     }
 
     public function handleCommandFinished(CommandFinished $commandEvent): void
     {
+        if (str_contains($commandEvent->command, 'migrate')) {
+            return;
+        }
+
         $currentTransaction = $this->transactionService->current();
         if ($commandEvent->exitCode !== Command::SUCCESS) {
             $this->transactionService->fail(

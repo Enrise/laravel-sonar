@@ -12,4 +12,6 @@ final class TransactionFailure extends Model
 {
     use HasFactory;
     use HasUlids;
+
+    protected $fillable = ['*'];
 }

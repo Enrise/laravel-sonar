@@ -18,7 +18,7 @@ return new class() extends Migration {
             $table->string('class');
             $table->json('context')->nullable();
             $table->timestamp('started');
-            $table->timestamp('finished');
+            $table->timestamp('finished')->nullable();
         });
     }
 

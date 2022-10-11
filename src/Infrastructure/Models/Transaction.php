@@ -12,4 +12,10 @@ final class Transaction extends Model
 {
     use HasFactory;
     use HasUlids;
+
+    public $timestamps = false;
+
+    protected $primaryKey = 'uuid';
+
+    protected $fillable = ['uuid', 'type', 'class', 'context', 'started', 'finished'];
 }
