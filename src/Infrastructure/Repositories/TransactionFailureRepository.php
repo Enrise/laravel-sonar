@@ -9,11 +9,12 @@ use Enrise\LaravelSonar\Domain\TransactionFailureRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class TransactionFailureRepository implements TransactionFailureRepositoryInterface
+final class TransactionFailureRepository implements TransactionFailureRepositoryInterface
 {
-    public function find(int $id): ?TransactionFailure
+    public function find(int $id): TransactionFailure
     {
         $eloquentTransactionFailure = $this->query()->find($id);
+
         return $eloquentTransactionFailure ? $this->hydrate($eloquentTransactionFailure) : null;
     }
 

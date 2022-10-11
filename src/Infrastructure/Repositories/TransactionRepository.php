@@ -5,16 +5,31 @@ declare(strict_types=1);
 namespace Enrise\LaravelSonar\Infrastructure\Repositories;
 
 use Enrise\LaravelSonar\Domain\Transaction;
+use Enrise\LaravelSonar\Domain\TransactionId;
 use Enrise\LaravelSonar\Domain\TransactionRepositoryInterface;
+use Enrise\LaravelSonar\Infrastructure\Models\Transaction as EloquentTransaction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class TransactionRepository implements TransactionRepositoryInterface
+final class TransactionRepository implements TransactionRepositoryInterface
 {
-    public function find(int $id): ?Transaction
+    public function find(TransactionId $id): ?Transaction
     {
-        $eloquentTransaction = $this->query()->find($id);
+        $eloquentTransaction = $this->query()->find((string) $id);
+
         return $eloquentTransaction ? $this->hydrate($eloquentTransaction) : null;
+    }
+
+    public function store(Transaction $transaction): void
+    {
+        EloquentTransaction::updateOrCreate(
+            [
+                'id' => $transaction->id,
+            ],
+            [
+
+            ]
+        );
     }
 
     private function query(): Builder

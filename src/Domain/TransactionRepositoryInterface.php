@@ -6,7 +6,7 @@ namespace Enrise\LaravelSonar\Domain;
 
 interface TransactionRepositoryInterface
 {
-    public function find(int $id): ?Transaction;
+    public function find(TransactionId $id): ?Transaction;
 
     public function store(Transaction $transaction): void;
 }

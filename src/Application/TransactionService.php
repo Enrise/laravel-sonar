@@ -9,13 +9,12 @@ use Enrise\LaravelSonar\Domain\TransactionFailure;
 use Enrise\LaravelSonar\Domain\TransactionFailureRepositoryInterface;
 use Enrise\LaravelSonar\Domain\TransactionRepositoryInterface;
 
-class TransactionService implements TransactionServiceInterface
+final class TransactionService implements TransactionServiceInterface
 {
     public function __construct(
         private readonly TransactionRepositoryInterface $transactionRepository,
         private readonly TransactionFailureRepositoryInterface $transactionFailureRepository,
-    )
-    {
+    ) {
     }
 
     public function start(): Transaction

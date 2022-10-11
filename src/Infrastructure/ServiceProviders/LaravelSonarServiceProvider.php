@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
+use Enrise\Sonar\Infrastructure\EventListeners\CommandEventSubscriber;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -57,5 +59,7 @@ final class LaravelSonarServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-sonar');
+
+        Event::subscribe(CommandEventSubscriber::class);
     }
 }

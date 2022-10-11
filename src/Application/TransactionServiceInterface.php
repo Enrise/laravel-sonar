@@ -8,7 +8,11 @@ use Enrise\LaravelSonar\Domain\Transaction;
 
 interface TransactionServiceInterface
 {
+    public function current(): Transaction;
+
     public function start(): Transaction;
+
     public function succeed(Transaction $transaction): void;
+
     public function fail(Transaction $transaction, string $message): void;
 }
