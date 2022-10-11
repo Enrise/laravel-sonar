@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\Repositories;
 
+use Carbon\CarbonImmutable;
 use Enrise\LaravelSonar\Domain\Transaction;
 use Enrise\LaravelSonar\Domain\TransactionDateTime;
 use Enrise\LaravelSonar\Domain\TransactionId;
@@ -24,13 +25,14 @@ final class TransactionRepository implements TransactionRepositoryInterface
 
     public function store(Transaction $transaction): void
     {
-        EloquentTransaction::create(
+        EloquentTransaction::updateOrCreate(
             [
                 'uuid' => $transaction->id,
+            ],
+            [
                 'type' => $transaction->type,
                 'class' => $transaction->class,
-                'context' => $transaction->context,
-                'started' => (string)$transaction->started,
+                'started' => CarbonImmutable::now(),
             ]
         );
     }
@@ -55,11 +57,11 @@ final class TransactionRepository implements TransactionRepositoryInterface
     private function hydrate(Model|EloquentTransaction $eloquentTransaction): Transaction
     {
         return new Transaction(
-            id: TransactionId::fromString($eloquentTransaction->id),
+            id: TransactionId::fromString($eloquentTransaction->uuid),
             type: TransactionType::from($eloquentTransaction->type),
             class: $eloquentTransaction->class,
-            started: $eloquentTransaction->started ? new TransactionDateTime($eloquentTransaction->started) : null,
-            finished: $eloquentTransaction->finished ? new TransactionDateTime($eloquentTransaction->finished) : null,
+            started: TransactionDateTime::fromCarbon($eloquentTransaction->started),
+            finished: TransactionDateTime::fromCarbon($eloquentTransaction->finished),
             context: $eloquentTransaction->context ?? [],
         );
     }

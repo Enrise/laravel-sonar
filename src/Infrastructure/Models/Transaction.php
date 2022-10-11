@@ -18,4 +18,9 @@ final class Transaction extends Model
     protected $primaryKey = 'uuid';
 
     protected $fillable = ['uuid', 'type', 'class', 'context', 'started', 'finished'];
+
+    protected $dates = [
+        'started',
+        'finished',
+    ];
 }

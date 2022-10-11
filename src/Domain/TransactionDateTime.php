@@ -4,17 +4,29 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Domain;
 
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use DateTimeImmutable;
 
 final class TransactionDateTime
 {
     private const FORMAT = 'Y-m-d H:i:s';
 
-    private DateTimeImmutable $dateTime;
+     public static function fromCarbon(?Carbon $carbonDateTime): self {
+        return new self($carbonDateTime !== null ? $carbonDateTime->toDateTimeImmutable() : null);
+     }
 
-    public function __construct(?string $timestamp = null)
+    public static function now(): self {
+        return new self(new DateTimeImmutable());
+    }
+
+    public function __construct(private readonly ?DateTimeImmutable $dateTime)
     {
-        $this->dateTime = new DateTimeImmutable($timestamp ?? 'now');
+    }
+
+    public function toCarbon(): ?CarbonImmutable
+    {
+        return $this->dateTime !== null ? new CarbonImmutable($this->dateTime) : null;
     }
 
     public function __toString(): string

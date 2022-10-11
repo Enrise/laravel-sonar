@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Application;
 
+use Enrise\LaravelSonar\Domain\CurrentTransactionStackInterface;
 use Enrise\LaravelSonar\Domain\Transaction;
 use Enrise\LaravelSonar\Domain\TransactionDateTime;
 use Enrise\LaravelSonar\Domain\TransactionFailure;
@@ -17,6 +18,7 @@ final class TransactionService implements TransactionServiceInterface
     public function __construct(
         private readonly TransactionRepositoryInterface $transactionRepository,
         private readonly TransactionFailureRepositoryInterface $transactionFailureRepository,
+        private  readonly CurrentTransactionStackInterface $currentTransactionStack,
     ) {
     }
 
@@ -26,9 +28,11 @@ final class TransactionService implements TransactionServiceInterface
             id: TransactionId::new(),
             type: $type,
             class: $class,
-            started: new TransactionDateTime(),
+            started: TransactionDateTime::now(),
             context: $context,
         );
+
+        $this->currentTransactionStack->push($transaction->id);
 
         $this->transactionRepository->store($transaction);
 
@@ -37,7 +41,7 @@ final class TransactionService implements TransactionServiceInterface
 
     public function succeed(Transaction $transaction): void
     {
-        $this->transactionRepository->updateFinishedAt($transaction, new TransactionDateTime());
+        $this->transactionRepository->updateFinishedAt($transaction, TransactionDateTime::now());
     }
 
     public function fail(Transaction $transaction, string $message): void
@@ -54,5 +58,8 @@ final class TransactionService implements TransactionServiceInterface
 
     public function current(): Transaction
     {
+        $transactionId = $this->currentTransactionStack->pop();
+
+        return $this->transactionRepository->find($transactionId);
     }
 }
