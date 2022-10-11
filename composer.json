@@ -16,13 +16,12 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "illuminate/support": "^8.0"
+        "php": "^8.0.2",
+        "illuminate/support": "^9.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.0",
-        "symplify/easy-coding-standard": "^11.1"
+        "symplify/easy-coding-standard": "^11.1",
     },
     "autoload": {
         "psr-4": {
@@ -45,11 +44,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Enrise\\LaravelSonar\\LaravelSonarServiceProvider"
-            ],
-            "aliases": {
-                "LaravelSonar": "Enrise\\LaravelSonar\\LaravelSonarFacade"
-            }
+                "Enrise\\LaravelSonar\\Infrastructure\\LaravelSonarServiceProvider"
+            ]
         }
     }
 }
