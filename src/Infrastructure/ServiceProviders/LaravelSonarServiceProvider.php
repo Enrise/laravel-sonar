@@ -26,25 +26,13 @@ final class LaravelSonarServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/config.php' => config_path('laravel-sonar.php'),
+                __DIR__ . '/../../config/laravel-sonar.php' => config_path('laravel-sonar.php'),
             ], 'config');
 
             $this->publishes([
                 __DIR__.'/../../resources/views' => resource_path('views/vendor/laravel-sonar'),
             ], 'views');
 
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-sonar'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-sonar'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
         }
     }
 
@@ -54,7 +42,7 @@ final class LaravelSonarServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../../../config/config.php', 'laravel-sonar');
+        $this->mergeConfigFrom(__DIR__ . '/../../../config/laravel-sonar.php', 'laravel-sonar');
 
         Event::subscribe(CommandEventSubscriber::class);
     }
