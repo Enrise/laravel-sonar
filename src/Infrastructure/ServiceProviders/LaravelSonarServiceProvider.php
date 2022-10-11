@@ -8,6 +8,7 @@ use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeError;
 use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeInfo;
 use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeSuccess;
 use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeWarning;
+use Enrise\LaravelSonar\Infrastructure\View\Components\TableFailures;
 use Enrise\LaravelSonar\Infrastructure\View\Components\TableTransactions;
 use Enrise\LaravelSonar\Application\Services\CurrentTransactionStack;
 use Enrise\LaravelSonar\Application\Services\TransactionService;
@@ -53,6 +54,7 @@ final class LaravelSonarServiceProvider extends ServiceProvider
         Blade::component('sonar.badge.warning', BadgeWarning::class);
         Blade::component('sonar.badge.info', BadgeInfo::class);
         Blade::component('sonar.table.transactions', TableTransactions::class);
+        Blade::component('sonar.table.failures', TableFailures::class);
     }
 
     /**
