@@ -17,5 +17,9 @@ function task:lint {
   php vendor/bin/ecs check ${*}
 }
 
+function task:test {
+  php vendor/bin/phpunit tests/ ${*}
+}
+
 banner
 "task:${@:-help}"
