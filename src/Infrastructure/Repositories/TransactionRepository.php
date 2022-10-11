@@ -32,7 +32,9 @@ final class TransactionRepository implements TransactionRepositoryInterface
             [
                 'type' => $transaction->type,
                 'class' => $transaction->class,
-                'started' => CarbonImmutable::now(),
+                'started' => $transaction->started->toCarbon(),
+                'finished' => $transaction->finished->toCarbon(),
+                'is_failed' => $transaction->isFailed,
             ]
         );
     }
