@@ -1,3 +1,5 @@
+![logo](./github/logo.png)
+
 ## Sonar
 
 Ever wanted to track command executions, notifications and events? Use Laravel Sonar today!
