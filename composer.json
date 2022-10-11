@@ -44,7 +44,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Enrise\\LaravelSonar\\Infrastructure\\LaravelSonarServiceProvider"
+                "Enrise\\LaravelSonar\\Infrastructure\\ServiceProviders\\LaravelSonarServiceProvider"
             ]
         }
     }

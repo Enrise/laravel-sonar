@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
-use Enrise\Sonar\Infrastructure\EventListeners\CommandEventSubscriber;
+use Enrise\LaravelSonar\Infrastructure\EventListeners\CommandEventSubscriber;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -19,23 +19,19 @@ final class LaravelSonarServiceProvider extends ServiceProvider
         Route::macro('sonar', static function (): void {
             Route::group(base_path('routes/sonar.php'));
         });
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-sonar');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-sonar');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+
+         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-sonar');
+         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('laravel-sonar.php'),
             ], 'config');
 
-            // Publishing the views.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-sonar'),
-            ], 'views');*/
+            ], 'views');
 
             // Publishing assets.
             /*$this->publishes([
