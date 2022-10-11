@@ -22,5 +22,6 @@
     </head>
     <body class="antialiased">
         <x-sonar.table.transactions :transactions="$transactions" />
+        <x-sonar.table.failures :failures="$failures" />
     </body>
 </html>
