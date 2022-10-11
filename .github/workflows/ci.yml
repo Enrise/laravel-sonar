@@ -42,7 +42,7 @@ jobs:
       - run: composer dump-autoload -q
 
       - name: Check codestyle
-        run: vendor/bin/ecs check --config=easy-coding-standard.php --no-progress-bar .
+        run: vendor/bin/ecs check --config=ecs.php --no-progress-bar .
 
       - name: Execute unit tests
         run: vendor/bin/phpunit --testsuite unit --testdox --colors=always
