@@ -6,10 +6,11 @@ namespace Enrise\LaravelSonar\Domain\Repositories;
 
 use Enrise\LaravelSonar\Domain\Entities\Transaction;
 use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
+use Illuminate\Support\Collection;
 
 interface TransactionRepositoryInterface
 {
-    public function all(): array;
+    public function all(): Collection;
 
     public function find(TransactionId $id): Transaction;
 

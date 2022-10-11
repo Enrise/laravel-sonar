@@ -12,12 +12,13 @@ use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
 use Enrise\LaravelSonar\Infrastructure\Models\Transaction as EloquentTransaction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 final class TransactionRepository implements TransactionRepositoryInterface
 {
-    public function all(): array
+    public function all(): Collection
     {
-        return $this->query()->get()->toArray();
+        return $this->query()->get();
     }
 
     public function find(TransactionId $id): Transaction
