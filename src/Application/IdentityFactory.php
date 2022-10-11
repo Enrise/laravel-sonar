@@ -6,7 +6,7 @@ namespace Enrise\LaravelSonar\Application;
 
 use Illuminate\Support\Str;
 
-class IdentityFactory
+final class IdentityFactory
 {
     public static function create(): string
     {

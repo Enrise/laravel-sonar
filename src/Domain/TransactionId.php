@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Domain;
 
+use Enrise\LaravelSonar\Application\IdentityFactory;
+
 final class TransactionId
 {
     private function __construct(
@@ -23,6 +25,6 @@ final class TransactionId
 
     public static function new(): self
     {
-        return new self('new');
+        return new self(IdentityFactory::create());
     }
 }

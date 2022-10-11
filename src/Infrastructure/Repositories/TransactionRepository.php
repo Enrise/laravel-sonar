@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Enrise\LaravelSonar\Infrastructure\Repositories;
 
 use Enrise\LaravelSonar\Domain\Transaction;
+use Enrise\LaravelSonar\Domain\TransactionDateTime;
 use Enrise\LaravelSonar\Domain\TransactionId;
 use Enrise\LaravelSonar\Domain\TransactionRepositoryInterface;
+use Enrise\LaravelSonar\Domain\TransactionType;
 use Enrise\LaravelSonar\Infrastructure\Models\Transaction as EloquentTransaction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -32,9 +34,15 @@ final class TransactionRepository implements TransactionRepositoryInterface
         );
     }
 
+    public function updateFinishedAt(Transaction $transaction, TransactionDateTime $finished): void
+    {
+        $this->for($transaction)->update([
+            'finished' => $finished,
+        ]);
+    }
+
     private function query(): Builder
     {
-        // this model needs to exist first (and aliased in the import)
         return EloquentTransaction::query();
     }
 
@@ -46,7 +54,11 @@ final class TransactionRepository implements TransactionRepositoryInterface
     private function hydrate(Model|EloquentTransaction $eloquentTransaction): Transaction
     {
         return new Transaction(
-            id: $eloquentTransaction->id
+            id: TransactionId::fromString($eloquentTransaction->id),
+            type: TransactionType::from($eloquentTransaction->type),
+            class: $eloquentTransaction->class,
+            started: $eloquentTransaction->started ? new TransactionDateTime($eloquentTransaction->started) : null,
+            finished: $eloquentTransaction->finished ? new TransactionDateTime($eloquentTransaction->finished) : null,
         );
     }
 }

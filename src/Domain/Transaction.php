@@ -10,13 +10,15 @@ final class Transaction
         public readonly TransactionId $id,
         public readonly TransactionType $type,
         public readonly string $class,
-        public readonly TransactionDateTime $started,
-        public readonly TransactionDateTime $finished,
+        public readonly ?TransactionDateTime $started = null,
+        public readonly ?TransactionDateTime $finished = null,
     ) {
     }
 
     public static function new(): self
     {
-        return new self(TransactionId::new());
+        return new self(
+            TransactionId::new(),
+        );
     }
 }

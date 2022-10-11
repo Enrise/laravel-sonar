@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Enrise\LaravelSonar\Application;
 
 use Enrise\LaravelSonar\Domain\Transaction;
+use Enrise\LaravelSonar\Domain\TransactionType;
 
 interface TransactionServiceInterface
 {
     public function current(): Transaction;
 
-    public function start(): Transaction;
+    public function start(TransactionType $type, string $class): Transaction;
 
     public function succeed(Transaction $transaction): void;
 

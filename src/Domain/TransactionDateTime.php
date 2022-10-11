@@ -6,17 +6,19 @@ namespace Enrise\LaravelSonar\Domain;
 
 use DateTimeImmutable;
 
-class TransactionDateTime
+final class TransactionDateTime
 {
+    private const FORMAT = 'Y-m-d H:i:s';
+
     private DateTimeImmutable $dateTime;
 
-    public function __construct()
+    public function __construct(?string $timestamp = null)
     {
-        $this->dateTime = new DateTimeImmutable();
+        $this->dateTime = new DateTimeImmutable($timestamp ?? 'now');
     }
 
     public function __toString(): string
     {
-        return (string)($this->dateTime->getTimestamp());
+        return $this->dateTime->format(self::FORMAT);
     }
 }
