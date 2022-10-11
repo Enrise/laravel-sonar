@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Enrise\LaravelSonar\Infrastructure\Repositories;
 
 use Carbon\CarbonImmutable;
-use Enrise\LaravelSonar\Domain\Transaction;
-use Enrise\LaravelSonar\Domain\TransactionDateTime;
-use Enrise\LaravelSonar\Domain\TransactionId;
-use Enrise\LaravelSonar\Domain\TransactionRepositoryInterface;
-use Enrise\LaravelSonar\Domain\TransactionType;
+use Enrise\LaravelSonar\Domain\Entities\Transaction;
+use Enrise\LaravelSonar\Domain\Repositories\TransactionRepositoryInterface;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionDateTime;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
 use Enrise\LaravelSonar\Infrastructure\Models\Transaction as EloquentTransaction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

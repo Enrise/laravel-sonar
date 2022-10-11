@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Domain;
+namespace Enrise\LaravelSonar\Domain\Entities;
+
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
 
 final class TransactionFailure
 {

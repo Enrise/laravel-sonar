@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Domain;
+namespace Enrise\LaravelSonar\Domain\Entities;
+
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionDateTime;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
 
 final class Transaction
 {

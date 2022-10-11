@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Application;
+namespace Enrise\LaravelSonar\Application\Services;
 
-use Enrise\LaravelSonar\Domain\CurrentTransactionStackInterface;
-use Enrise\LaravelSonar\Domain\TransactionId;
+use Enrise\LaravelSonar\Domain\Repositories\CurrentTransactionStackInterface;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
 use RuntimeException;
 
 final class CurrentTransactionStack implements CurrentTransactionStackInterface

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Application;
+namespace Enrise\LaravelSonar\Application\Factories;
 
 use Illuminate\Support\Str;
 

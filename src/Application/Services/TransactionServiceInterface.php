@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Application;
+namespace Enrise\LaravelSonar\Application\Services;
 
-use Enrise\LaravelSonar\Domain\Transaction;
-use Enrise\LaravelSonar\Domain\TransactionType;
+use Enrise\LaravelSonar\Domain\Entities\Transaction;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
 
 interface TransactionServiceInterface
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Domain;
+namespace Enrise\LaravelSonar\Domain\ValueObjects;
 
 enum TransactionType: string
 {

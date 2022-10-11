@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Domain;
+namespace Enrise\LaravelSonar\Domain\Repositories;
+
+use Enrise\LaravelSonar\Domain\Entities\Transaction;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionDateTime;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
 
 interface TransactionRepositoryInterface
 {

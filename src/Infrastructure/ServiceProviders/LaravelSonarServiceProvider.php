@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
-use Enrise\LaravelSonar\Application\CurrentTransactionStack;
-use Enrise\LaravelSonar\Application\TransactionService;
-use Enrise\LaravelSonar\Application\TransactionServiceInterface;
-use Enrise\LaravelSonar\Domain\CurrentTransactionStackInterface;
-use Enrise\LaravelSonar\Domain\TransactionFailureRepositoryInterface;
-use Enrise\LaravelSonar\Domain\TransactionRepositoryInterface;
+use Enrise\LaravelSonar\Application\Services\CurrentTransactionStack;
+use Enrise\LaravelSonar\Application\Services\TransactionService;
+use Enrise\LaravelSonar\Application\Services\TransactionServiceInterface;
+use Enrise\LaravelSonar\Domain\Repositories\CurrentTransactionStackInterface;
+use Enrise\LaravelSonar\Domain\Repositories\TransactionFailureRepositoryInterface;
+use Enrise\LaravelSonar\Domain\Repositories\TransactionRepositoryInterface;
 use Enrise\LaravelSonar\Infrastructure\EventListeners\CommandEventSubscriber;
 use Enrise\LaravelSonar\Infrastructure\Repositories\TransactionFailureRepository;
 use Enrise\LaravelSonar\Infrastructure\Repositories\TransactionRepository;
@@ -56,5 +56,5 @@ final class LaravelSonarServiceProvider extends ServiceProvider
         $this->app->singleton(CurrentTransactionStackInterface::class, CurrentTransactionStack::class);
 
         Event::subscribe(CommandEventSubscriber::class);
-}
+    }
 }

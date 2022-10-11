@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Application;
+namespace Enrise\LaravelSonar\Application\Services;
 
-use Enrise\LaravelSonar\Domain\CurrentTransactionStackInterface;
-use Enrise\LaravelSonar\Domain\Transaction;
-use Enrise\LaravelSonar\Domain\TransactionDateTime;
-use Enrise\LaravelSonar\Domain\TransactionFailure;
-use Enrise\LaravelSonar\Domain\TransactionFailureRepositoryInterface;
-use Enrise\LaravelSonar\Domain\TransactionId;
-use Enrise\LaravelSonar\Domain\TransactionRepositoryInterface;
-use Enrise\LaravelSonar\Domain\TransactionType;
+use Enrise\LaravelSonar\Domain\Entities\Transaction;
+use Enrise\LaravelSonar\Domain\Entities\TransactionFailure;
+use Enrise\LaravelSonar\Domain\Repositories\CurrentTransactionStackInterface;
+use Enrise\LaravelSonar\Domain\Repositories\TransactionFailureRepositoryInterface;
+use Enrise\LaravelSonar\Domain\Repositories\TransactionRepositoryInterface;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionDateTime;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
+use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
 
 final class TransactionService implements TransactionServiceInterface
 {
     public function __construct(
         private readonly TransactionRepositoryInterface $transactionRepository,
         private readonly TransactionFailureRepositoryInterface $transactionFailureRepository,
-        private  readonly CurrentTransactionStackInterface $currentTransactionStack,
+        private readonly CurrentTransactionStackInterface $currentTransactionStack,
     ) {
     }
 

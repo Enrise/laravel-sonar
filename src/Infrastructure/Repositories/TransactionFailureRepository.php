@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\Repositories;
 
-use Enrise\LaravelSonar\Domain\TransactionFailure;
-use Enrise\LaravelSonar\Domain\TransactionFailureRepositoryInterface;
+use Enrise\LaravelSonar\Domain\Entities\TransactionFailure;
+use Enrise\LaravelSonar\Domain\Repositories\TransactionFailureRepositoryInterface;
 use Enrise\LaravelSonar\Infrastructure\Models\TransactionFailure as EloquentTransactionFailure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

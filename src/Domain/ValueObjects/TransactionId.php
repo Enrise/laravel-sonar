@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Enrise\LaravelSonar\Domain;
+namespace Enrise\LaravelSonar\Domain\ValueObjects;
 
-use Enrise\LaravelSonar\Application\IdentityFactory;
+use Enrise\LaravelSonar\Application\Factories\IdentityFactory;
 
 final class TransactionId
 {
