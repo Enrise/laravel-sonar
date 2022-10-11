@@ -1,4 +1,4 @@
-![logo](./github/logo.png)
+![logo](.github/logo.png)
 
 ## Sonar
 
