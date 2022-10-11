@@ -4,7 +4,7 @@ namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelSolarServiceProvider extends ServiceProvider
+class LaravelSonarServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -14,29 +14,29 @@ class LaravelSolarServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-solar');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-solar');
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-sonar');
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-sonar');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('laravel-solar.php'),
+                __DIR__ . '/../config/config.php' => config_path('laravel-sonar.php'),
             ], 'config');
 
             // Publishing the views.
             /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-solar'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-sonar'),
             ], 'views');*/
 
             // Publishing assets.
             /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-solar'),
+                __DIR__.'/../resources/assets' => public_path('vendor/laravel-sonar'),
             ], 'assets');*/
 
             // Publishing the translation files.
             /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-solar'),
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-sonar'),
             ], 'lang');*/
 
             // Registering package commands.
@@ -49,8 +49,9 @@ class LaravelSolarServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        dd(123);
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-solar');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-sonar');
 
     }
 }
