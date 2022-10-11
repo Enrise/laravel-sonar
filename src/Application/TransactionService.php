@@ -20,13 +20,14 @@ final class TransactionService implements TransactionServiceInterface
     ) {
     }
 
-    public function start(TransactionType $type, string $class): Transaction
+    public function start(TransactionType $type, string $class, array $context): Transaction
     {
         $transaction = new Transaction(
             id: TransactionId::new(),
             type: $type,
             class: $class,
             started: new TransactionDateTime(),
+            context: $context,
         );
 
         $this->transactionRepository->store($transaction);
@@ -53,6 +54,5 @@ final class TransactionService implements TransactionServiceInterface
 
     public function current(): Transaction
     {
-        
     }
 }

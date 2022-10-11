@@ -16,6 +16,7 @@ return new class() extends Migration {
             $table->ulid();
             $table->enum('type', ['notification', 'schedule', 'command']);
             $table->string('class');
+            $table->json('context')->nullable();
             $table->timestamp('started');
             $table->timestamp('finished');
         });

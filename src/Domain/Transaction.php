@@ -12,6 +12,7 @@ final class Transaction
         public readonly string $class,
         public readonly ?TransactionDateTime $started = null,
         public readonly ?TransactionDateTime $finished = null,
+        public readonly array $context = [],
     ) {
     }
 

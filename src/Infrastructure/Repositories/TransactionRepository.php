@@ -59,6 +59,7 @@ final class TransactionRepository implements TransactionRepositoryInterface
             class: $eloquentTransaction->class,
             started: $eloquentTransaction->started ? new TransactionDateTime($eloquentTransaction->started) : null,
             finished: $eloquentTransaction->finished ? new TransactionDateTime($eloquentTransaction->finished) : null,
+            context: $eloquentTransaction->context ?? [],
         );
     }
 }

@@ -17,7 +17,6 @@ use Illuminate\Support\ServiceProvider;
 
 final class LaravelSonarServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      */
@@ -27,8 +26,8 @@ final class LaravelSonarServiceProvider extends ServiceProvider
             Route::group(__DIR__ . '/../../../routes/sonar.php');
         });
 
-         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'laravel-sonar');
-         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'laravel-sonar');
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -36,9 +35,8 @@ final class LaravelSonarServiceProvider extends ServiceProvider
             ], 'config');
 
             $this->publishes([
-                __DIR__.'/../../resources/views' => resource_path('views/vendor/laravel-sonar'),
+                __DIR__ . '/../../resources/views' => resource_path('views/vendor/laravel-sonar'),
             ], 'views');
-
         }
     }
 

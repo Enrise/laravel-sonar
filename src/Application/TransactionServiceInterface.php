@@ -11,7 +11,7 @@ interface TransactionServiceInterface
 {
     public function current(): Transaction;
 
-    public function start(TransactionType $type, string $class): Transaction;
+    public function start(TransactionType $type, string $class, array $context): Transaction;
 
     public function succeed(Transaction $transaction): void;
 
