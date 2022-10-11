@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 final class LaravelSonarServiceProvider extends ServiceProvider
@@ -13,6 +14,9 @@ final class LaravelSonarServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Route::macro('sonar', static function (): void {
+            Route::group(base_path('routes/sonar.php'));
+        });
         /*
          * Optional methods to load your package assets
          */
