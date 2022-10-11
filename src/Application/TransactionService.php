@@ -22,7 +22,7 @@ class TransactionService implements TransactionServiceInterface
     {
         $transaction = new Transaction(
             id: IdentityFactory::create(),
-            
+
         );
 
         $this->transactionRepository->store($transaction);
