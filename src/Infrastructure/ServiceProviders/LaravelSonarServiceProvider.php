@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Enrise\LaravelSonar\Infrastructure\ServiceProviders;
 
+use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeError;
+use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeInfo;
+use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeSuccess;
+use Enrise\LaravelSonar\Infrastructure\View\Components\BadgeWarning;
+use Enrise\LaravelSonar\Infrastructure\View\Components\TableTransactions;
 use Enrise\LaravelSonar\Application\Services\CurrentTransactionStack;
 use Enrise\LaravelSonar\Application\Services\TransactionService;
 use Enrise\LaravelSonar\Application\Services\TransactionServiceInterface;
@@ -14,6 +19,7 @@ use Enrise\LaravelSonar\Infrastructure\EventListeners\CommandEventSubscriber;
 use Enrise\LaravelSonar\Infrastructure\EventListeners\NotificationEventSubscriber;
 use Enrise\LaravelSonar\Infrastructure\Repositories\TransactionFailureRepository;
 use Enrise\LaravelSonar\Infrastructure\Repositories\TransactionRepository;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -41,6 +47,12 @@ final class LaravelSonarServiceProvider extends ServiceProvider
                 __DIR__ . '/../../../resources/views' => resource_path('views/vendor/laravel-sonar'),
             ], 'views');
         }
+
+        Blade::component('sonar.badge.error', BadgeError::class);
+        Blade::component('sonar.badge.success', BadgeSuccess::class);
+        Blade::component('sonar.badge.warning', BadgeWarning::class);
+        Blade::component('sonar.badge.info', BadgeInfo::class);
+        Blade::component('sonar.table.transactions', TableTransactions::class);
     }
 
     /**

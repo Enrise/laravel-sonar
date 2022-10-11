@@ -9,7 +9,7 @@ use Enrise\LaravelSonar\Domain\ValueObjects\TransactionType;
 
 interface TransactionServiceInterface
 {
-    public function current(): Transaction;
+    public function current();
 
     public function start(TransactionType $type, string $class, array $context): Transaction;
 

@@ -8,6 +8,8 @@ use Enrise\LaravelSonar\Domain\Entities\TransactionFailure;
 
 interface TransactionFailureRepositoryInterface
 {
+    public function all(): array;
+
     public function find(int $id): TransactionFailure;
 
     public function store(TransactionFailure $transactionFailure): void;

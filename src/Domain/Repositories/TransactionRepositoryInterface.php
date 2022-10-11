@@ -9,6 +9,8 @@ use Enrise\LaravelSonar\Domain\ValueObjects\TransactionId;
 
 interface TransactionRepositoryInterface
 {
+    public function all(): array;
+
     public function find(TransactionId $id): Transaction;
 
     public function store(Transaction $transaction): void;

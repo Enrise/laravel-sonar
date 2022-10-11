@@ -15,6 +15,11 @@ use Illuminate\Database\Eloquent\Model;
 
 final class TransactionRepository implements TransactionRepositoryInterface
 {
+    public function all(): array
+    {
+        return $this->query()->get()->toArray();
+    }
+
     public function find(TransactionId $id): Transaction
     {
         $eloquentTransaction = $this->query()->find((string) $id);

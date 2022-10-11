@@ -46,7 +46,7 @@ final class CommandEventSubscriber
             return;
         }
 
-        $this->transactionService->succeed($currentTransaction);
+        // $this->transactionService->succeed($currentTransaction);
     }
 
     public function subscribe(): array

@@ -12,6 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 
 final class TransactionFailureRepository implements TransactionFailureRepositoryInterface
 {
+    public function all(): array
+    {
+        return $this->query()->get()->toArray();
+    }
+
     public function find(int $id): TransactionFailure
     {
         $eloquentTransactionFailure = $this->query()->findOrFail($id);
