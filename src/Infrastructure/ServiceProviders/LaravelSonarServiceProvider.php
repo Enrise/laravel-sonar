@@ -11,6 +11,7 @@ use Enrise\LaravelSonar\Domain\Repositories\CurrentTransactionStackInterface;
 use Enrise\LaravelSonar\Domain\Repositories\TransactionFailureRepositoryInterface;
 use Enrise\LaravelSonar\Domain\Repositories\TransactionRepositoryInterface;
 use Enrise\LaravelSonar\Infrastructure\EventListeners\CommandEventSubscriber;
+use Enrise\LaravelSonar\Infrastructure\EventListeners\NotificationEventSubscriber;
 use Enrise\LaravelSonar\Infrastructure\Repositories\TransactionFailureRepository;
 use Enrise\LaravelSonar\Infrastructure\Repositories\TransactionRepository;
 use Illuminate\Support\Facades\Event;
@@ -64,5 +65,6 @@ final class LaravelSonarServiceProvider extends ServiceProvider
         });
 
         Event::subscribe(CommandEventSubscriber::class);
+        Event::subscribe(NotificationEventSubscriber::class);
     }
 }

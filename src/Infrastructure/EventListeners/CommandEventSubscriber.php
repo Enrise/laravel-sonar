@@ -49,7 +49,7 @@ final class CommandEventSubscriber
         $this->transactionService->succeed($currentTransaction);
     }
 
-    public function subscribe()
+    public function subscribe(): array
     {
         return [
             CommandStarting::class => 'handleCommandStarting',
