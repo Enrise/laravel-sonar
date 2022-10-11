@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->ulid();
             $table->enum('type',['notification', 'schedule', 'command']);
             $table->string('class');
             $table->timestamp('started');

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaction_failures', function (Blueprint $table) {
-            $table->id();
+            $table->ulid();
             $table->timestamps();
-            $table->foreignId('transaction_id')->constrained('transactions');
+            $table->foreignUlid('transaction_id')->constrained('transactions');
             $table->string('error_message');
             $table->boolean('is_resolved');
         });

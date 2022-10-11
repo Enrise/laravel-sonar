@@ -7,8 +7,8 @@ namespace Enrise\LaravelSonar\Domain;
 final class TransactionFailure
 {
     public function __construct(
-        public readonly int $id,
-        public readonly int $transactionId,
+        public readonly string $id,
+        public readonly string $transactionId,
         public readonly string $message,
         public readonly bool $isResolved,
     ) {

@@ -20,8 +20,10 @@ class TransactionService implements TransactionServiceInterface
 
     public function start(): Transaction
     {
-        // todo: uui
-        $transaction = new Transaction(0);
+        $transaction = new Transaction(
+            id: IdentityFactory::create(),
+            
+        );
 
         $this->transactionRepository->store($transaction);
 
@@ -38,7 +40,7 @@ class TransactionService implements TransactionServiceInterface
     {
         //todo: uuid
         $transactionFailure = new TransactionFailure(
-            id: 0,
+            id: IdentityFactory::create(),
             transactionId: $transaction->id,
             message: $message,
             isResolved: false,
