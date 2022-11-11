@@ -1,5 +1,10 @@
 ![logo](.github/logo.png)
 
+## Hackathon project
+
+This project was created during a hackathon, which explains the commit messages, lack of code styling, etc. etc.
+For more information please see https://enrise.com/2022/10/dlf-hackathon-2022-bij-enrise/.
+
 ## Sonar
 
 Ever wanted to track command executions, notifications and events? Use Laravel Sonar today!
